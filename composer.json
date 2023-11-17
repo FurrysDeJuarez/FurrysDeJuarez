@@ -1,0 +1,21 @@
+{
+    "name": "furrysdejuarez/furrysdejuarez",
+    "description": "Landing de FurrysDeJuarez.com",
+    "type": "project",
+    "require": {
+        "perritu/router": "^1.0"
+    },
+    "license": "AGPL3",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Angel Garcia",
+            "email": "git@angelgarcia.dev"
+        }
+    ],
+    "minimum-stability": "RC"
+}

@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "97f4e91f1adb29eca4599d99be0033ee",
+    "packages": [
+        {
+            "name": "perritu/router",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Perritu/Router.git",
+                "reference": "4c67654534e5e2fe577f12862f2f8a7dd8572c80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Perritu/Router/zipball/4c67654534e5e2fe577f12862f2f8a7dd8572c80",
+                "reference": "4c67654534e5e2fe577f12862f2f8a7dd8572c80",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Perritu\\Router\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "Angel Garcia",
+                    "email": "git@angelgarcia.dev"
+                }
+            ],
+            "description": "Simple -yet powerfull- PHP Router",
+            "support": {
+                "issues": "https://github.com/Perritu/Router/issues",
+                "source": "https://github.com/Perritu/Router/tree/v1.0.5"
+            },
+            "time": "2023-01-11T08:48:36+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "RC",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
