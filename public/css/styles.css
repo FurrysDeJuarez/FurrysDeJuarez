@@ -1,0 +1,35 @@
+html {
+  background-color: var(--bgcolor, #DDD);
+  color: var(--fgcolor, #333);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+nav ul a:hover {
+  background-color: #fff2;
+}
+
+.brand-logo,
+.brand-logo img {
+  height: 100%;
+}
+
+nav,
+.page-footer {
+  background-color: var(--bgcolor2, #111);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --bgcolor: #333;
+    --fgcolor: #DDF;
+  }
+}

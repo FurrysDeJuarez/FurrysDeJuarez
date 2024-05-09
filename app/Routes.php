@@ -25,7 +25,7 @@ class Routes
   public static function load()
   {
     Router::ANY('/', function () {
-      echo 'Test ABC123';
-    }, Router::E_FLAT);
+      view('index');
+    });
   }
 }
