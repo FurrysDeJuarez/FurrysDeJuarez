@@ -31,6 +31,33 @@ nav,
   background-color: var(--bgcolor-translucid, #0003);
 }
 
+.round-images img {
+  border-radius: 50%;
+}
+
+.card-group>.card {
+  background: var(--bgcolor-translucid, #0003);
+  width: 200px;
+  display: inline-block;
+  padding: 10px;
+  margin: 2px 5px;
+}
+
+.card-group>.card img {
+  width: 180px;
+  height: 180px;
+}
+
+.card .social-btn {
+  display: inline-block;
+  background: var(--fgcolor);
+  color: var(--bgcolor);
+  padding: 3px 5px;
+  font-size: 2em;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     --bgcolor: #333;

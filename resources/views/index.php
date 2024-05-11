@@ -9,7 +9,7 @@ $body = function () { ?>
       <div class="card-content">
         <p>
           Logotipo de la comunidad. <br>
-          Autor: <a href="#">AstaDraws</a>
+          Autor: <a href="https://bsky.app/profile/astachoiki.bsky.social">AstaDraws</a>
         </p>
       </div>
     </div>
@@ -48,6 +48,46 @@ $body = function () { ?>
   </div>
   <div class="container center-align">
     <iframe src="https://calendar.google.com/calendar/embed?height=320&wkst=1&ctz=America%2FCiudad_Juarez&bgcolor=%23999999&mode=AGENDA&hl=es_419&title=Furrys%20de%20Ju%C3%A1rez&src=MGJlMTYyN2ViOWM4ZTI2MTg0OGI4ZGQwOGZjNTA4OTExZDg5NThjNmZkZTBjZGZhZGQ0YjE1OGYyMjNkMjQxNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00" style="border-width:0;display:inline-block" width="800" height="320" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <div class="container">
+    <h3>Algunos miembros de nuestra comunidad</h3>
+  </div>
+  <div class="center-align card-group">
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/angel.png') ?>" alt="Ángel">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Ángel</p>
+        <div class="center-align">
+          <a href="https://github.com/Perritu" target="_blank" class="social-btn fa-brands fa-github" title="Github@perritu"></a>
+          <a href="https://twitch.tv/perritu" target="_blank" class="social-btn fa-brands fa-twitch" title="Twitch@perritu"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/konan.png') ?>" alt="Konan Wolfpard">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Konan Wolfpard</p>
+        <div class="center-align">
+          <a href="https://twitter.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@konanwolfpard"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/startgen.png') ?>" alt="StartGenK9">
+      </div>
+      <div class="card-content">
+        <p class="center-align">StartGenK9</p>
+        <div class="center-align">
+          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
+          <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
+        </div>
+      </div>
+    </div>
   </div>
 <?php };
 
