@@ -7,7 +7,7 @@
     },
     "license": "AGPL3",
     "autoload": {
-        "files": ["resources/Helpers.php"],
+        "files": ["resources/helper-functions.php"],
         "psr-4": {
             "App\\": "app/"
         }
