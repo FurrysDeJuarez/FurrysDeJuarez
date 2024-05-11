@@ -25,7 +25,19 @@ class Routes
   public static function load()
   {
     Router::ANY('/', function () {
-      echo 'Test ABC123';
-    }, Router::E_FLAT);
+      view('index');
+    });
+
+    Router::ANY('/contacto', function () {
+      view('contacto');
+    });
+
+    // ...
+
+    // 404
+    Router::ANY('.*', function () {
+      header('HTTP/2 404 Not Found');
+      view('errors/404');
+    }, Router::E_PREG);
   }
 }

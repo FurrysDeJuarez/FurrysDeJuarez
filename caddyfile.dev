@@ -1,0 +1,5 @@
+http://localhost:8888 {
+    root * public
+    php_fastcgi localhost:60000
+    file_server
+}
