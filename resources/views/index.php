@@ -46,6 +46,9 @@ $body = function () { ?>
       a nuestras reuniones o eventos.
     </p>
   </div>
+  <div class="container center-align">
+    <iframe src="https://calendar.google.com/calendar/embed?height=320&wkst=1&ctz=America%2FCiudad_Juarez&bgcolor=%23999999&mode=AGENDA&hl=es_419&title=Furrys%20de%20Ju%C3%A1rez&src=MGJlMTYyN2ViOWM4ZTI2MTg0OGI4ZGQwOGZjNTA4OTExZDg5NThjNmZkZTBjZGZhZGQ0YjE1OGYyMjNkMjQxNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00" style="border-width:0;display:inline-block" width="800" height="320" frameborder="0" scrolling="no"></iframe>
+  </div>
 <?php };
 
 view('components/template', [
