@@ -22,7 +22,8 @@
       .attr('href', 'https://onlyfans.com/murrsuitJuarez')
       .click(function(evt) {
         evt.preventDefault();
-        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'); // <- Sí, es un Rickroll
+        window.open('https://onlyfans.com/?ref=murrsuitJuarez', 'rickRolTrap');
+        self.setTimeout(() => window.open('https://youtu.be/kAMmg73WVIA?feature=shared&t=41', 'rickRolTrap'), 1000);
       })
   })
 </script>
