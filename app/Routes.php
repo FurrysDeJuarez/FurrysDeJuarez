@@ -27,5 +27,17 @@ class Routes
     Router::ANY('/', function () {
       view('index');
     });
+
+    Router::ANY('/contacto', function () {
+      view('contacto');
+    });
+
+    // ...
+
+    // 404
+    Router::ANY('.*', function () {
+      header('HTTP/2 404 Not Found');
+      view('errors/404');
+    }, Router::E_PREG);
   }
 }
