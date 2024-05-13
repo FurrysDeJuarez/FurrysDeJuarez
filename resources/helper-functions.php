@@ -4,24 +4,6 @@
  * Grupo de funciones utilitarias.
  */
 
-// /**
-//  * Regresa una ruta un archivo www en public, y opcionalmente un hash al final (cache-busting).
-//  *
-//  * @param string $path      Ruta relativa del archivo en la carpeta public.
-//  * @param bool   $hashCache Indica si se debe agregar un hash al final de la ruta para cache-busting.
-//  */
-// function publicPath($path, $hashCache = false)
-// {
-//   $file = PUBLIC_DIR . "/" . ltrim($path, '/');
-//   $wwwPath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') . "/" . ltrim($path, '/');
-
-//   if ($hashCache) {
-//     $wwwPath .= "?h=" . hash_file('crc32', $file);
-//   }
-
-//   return $wwwPath;
-// }
-
 /**
  * Regresa la ruta absoluta a un archivo del proyecto.
  *

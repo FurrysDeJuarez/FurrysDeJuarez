@@ -9,7 +9,7 @@ $body = function () { ?>
       <div class="card-content">
         <p>
           Logotipo de la comunidad. <br>
-          Autor: <a href="https://bsky.app/profile/astachoiki.bsky.social">AstaDraws</a>
+          Autor: <a href="https://bsky.app/profile/astachoiki.bsky.social">AstaChoiki</a>
         </p>
       </div>
     </div>
@@ -46,8 +46,8 @@ $body = function () { ?>
       a nuestras reuniones o eventos.
     </p>
   </div>
-  <div class="container center-align">
-    <iframe src="https://calendar.google.com/calendar/embed?height=320&wkst=1&ctz=America%2FCiudad_Juarez&bgcolor=%23999999&mode=AGENDA&hl=es_419&title=Furrys%20de%20Ju%C3%A1rez&src=MGJlMTYyN2ViOWM4ZTI2MTg0OGI4ZGQwOGZjNTA4OTExZDg5NThjNmZkZTBjZGZhZGQ0YjE1OGYyMjNkMjQxNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00" style="border-width:0;display:inline-block" width="800" height="320" frameborder="0" scrolling="no"></iframe>
+  <div class="container center-align" style="overflow:hidden">
+    <iframe src="https://calendar.google.com/calendar/embed?height=320&wkst=1&ctz=America%2FCiudad_Juarez&bgcolor=%23999999&mode=AGENDA&hl=es_419&title=Furrys%20de%20Ju%C3%A1rez&src=MGJlMTYyN2ViOWM4ZTI2MTg0OGI4ZGQwOGZjNTA4OTExZDg5NThjNmZkZTBjZGZhZGQ0YjE1OGYyMjNkMjQxNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00" style="border-width:0;display:inline-block;width:100%;margin-top:-45px" height="320" frameborder="0" scrolling="no"></iframe>
   </div>
   <div class="container">
     <h3>Algunos miembros de nuestra comunidad</h3>
@@ -55,7 +55,7 @@ $body = function () { ?>
   <div class="center-align card-group">
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/angel.png') ?>" alt="Ángel">
+        <img src="https://github.com/perritu.png" alt="Ángel" style="background-color: #fff;border-color:#fff">
       </div>
       <div class="card-content">
         <p class="center-align">Ángel</p>
@@ -67,24 +67,40 @@ $body = function () { ?>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/konan.png') ?>" alt="Konan Wolfpard">
+        <img src="<?= wwwPath('img/avatar/AstaChoiki.webp') ?>" alt="AstaChoiki" style="border-color: #fed">
       </div>
       <div class="card-content">
-        <p class="center-align">Konan Wolfpard</p>
+        <p class="center-align">AstaChoiki</p>
         <div class="center-align">
-          <a href="https://twitter.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@konanwolfpard"></a>
+          <a href="https://bsky.app/profile/astachoiki.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@astachoiki.bsky.social"></a>
+          <a href="https://t.me/astachoikiwips" target="_blank" class="social-btn fa-brands fa-telegram" title="Telegram@astachoikiwips"></a>
+          <a href="https://twitter.com/bakucreeper" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@bakucreeper"></a>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/startgen.png') ?>" alt="StartGenK9">
+        <img src="<?= wwwPath('img/avatar/konan.webp') ?>" alt="Konan Wolfpard" style="border-color:#fff">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Konan Wolfpard</p>
+        <div class="center-align">
+          <a href="https://bsky.app/profile/konanwolfpard.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@konanwolfpard.bsky.social"></a>
+          <a href="https://www.facebook.com/profile.php?id=100069752913094" target="_blank" class="social-btn fa-brands fa-facebook" title="Facebook@konanwolfpard"></a>
+          <a href="https://www.furtrack.com/user/KonanWolfpard/crafting" target=_blank" class="social-btn fa-solid fa-paw" title="FurTrack@KonanWolfpard"></a>
+          <a href=" https://twitter.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@konanwolfpard"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/startgen.webp') ?>" alt="StartGenK9" style="border-color:#888">
       </div>
       <div class="card-content">
         <p class="center-align">StartGenK9</p>
         <div class="center-align">
-          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
           <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
+          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
         </div>
       </div>
     </div>
