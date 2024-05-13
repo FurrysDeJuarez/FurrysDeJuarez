@@ -46,6 +46,7 @@ nav,
 .card-group>.card img {
   width: 180px;
   height: 180px;
+  border: 2px solid var(--fgcolor, #ccc);
 }
 
 .card .social-btn {
