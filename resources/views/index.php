@@ -78,28 +78,29 @@ $body = function () { ?>
         </div>
       </div>
     </div>
-    <div class=" card">
+    <div class="card">
       <div class="round-images">
         <img src="<?= wwwPath('img/avatar/konan.webp') ?>" alt="Konan Wolfpard" style="border-color:#fff">
       </div>
       <div class="card-content">
         <p class="center-align">Konan Wolfpard</p>
         <div class="center-align">
-          <a href="https://twitter.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@konanwolfpard"></a>
           <a href="https://bsky.app/profile/konanwolfpard.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@konanwolfpard.bsky.social"></a>
           <a href="https://www.facebook.com/profile.php?id=100069752913094" target="_blank" class="social-btn fa-brands fa-facebook" title="Facebook@konanwolfpard"></a>
+          <a href="https://www.furtrack.com/user/KonanWolfpard/crafting" target=_blank" class="social-btn fa-solid fa-paw" title="FurTrack@KonanWolfpard"></a>
+          <a href=" https://twitter.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@konanwolfpard"></a>
         </div>
       </div>
     </div>
-    <div class=" card">
+    <div class="card">
       <div class="round-images">
         <img src="<?= wwwPath('img/avatar/startgen.webp') ?>" alt="StartGenK9" style="border-color:#888">
       </div>
       <div class="card-content">
         <p class="center-align">StartGenK9</p>
         <div class="center-align">
-          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
           <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
+          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
         </div>
       </div>
     </div>
