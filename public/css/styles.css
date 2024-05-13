@@ -49,6 +49,10 @@ nav,
   border: 2px solid var(--fgcolor, #ccc);
 }
 
+.card-group .card .card-content {
+  padding: 10px 0px;
+}
+
 .card .social-btn {
   display: inline-block;
   background: var(--fgcolor);
