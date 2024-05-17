@@ -47,7 +47,7 @@ $body = function () { ?>
     </p>
   </div>
   <div class="container center-align" style="overflow:hidden">
-    <iframe src="https://calendar.google.com/calendar/embed?height=320&wkst=1&ctz=America%2FCiudad_Juarez&bgcolor=%23999999&mode=AGENDA&hl=es_419&title=Furrys%20de%20Ju%C3%A1rez&src=MGJlMTYyN2ViOWM4ZTI2MTg0OGI4ZGQwOGZjNTA4OTExZDg5NThjNmZkZTBjZGZhZGQ0YjE1OGYyMjNkMjQxNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00" style="border-width:0;display:inline-block;width:100%;margin-top:-45px" height="320" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FCiudad_Juarez&bgcolor=%23999999&showNav=0&showPrint=0&showTabs=0&mode=AGENDA&title=Furrys%20de%20Ju%C3%A1rez&hl=es_419&src=NjU3NzdlNjY0Zjg0YjJlNWE1MTY0YjM5ZjUxODUzN2NlMmY2ZDgzMTNlZmQzYWQ2N2U1OGQ3YzYxZWIxOWY5ZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00" style="border-width:0;display:inline-block;width:100%;margin-top:-45px" height="320" frameborder="0" scrolling="no"></iframe>
   </div>
   <div class="container">
     <h3>Algunos miembros de nuestra comunidad</h3>
