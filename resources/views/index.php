@@ -67,7 +67,7 @@ $body = function () { ?>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/AstaChoiki.webp') ?>" alt="AstaChoiki" style="border-color: #fed">
+        <img src="<?= wwwPath('img/avatar/AstaChoiki.webp', true) ?>" alt="AstaChoiki" style="border-color: #fed">
       </div>
       <div class="card-content">
         <p class="center-align">AstaChoiki</p>
@@ -80,7 +80,7 @@ $body = function () { ?>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/konan.webp') ?>" alt="Konan Wolfpard" style="border-color:#fff">
+        <img src="<?= wwwPath('img/avatar/konan.webp', true) ?>" alt="Konan Wolfpard" style="border-color:#fff">
       </div>
       <div class="card-content">
         <p class="center-align">Konan Wolfpard</p>
@@ -94,7 +94,7 @@ $body = function () { ?>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/startgen.webp') ?>" alt="StartGenK9" style="border-color:#888">
+        <img src="<?= wwwPath('img/avatar/startgen.webp', true) ?>" alt="StartGenK9" style="border-color:#888">
       </div>
       <div class="card-content">
         <p class="center-align">StartGenK9</p>
