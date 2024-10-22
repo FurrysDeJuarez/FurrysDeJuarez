@@ -1,7 +1,7 @@
 <footer class="page-footer">
   <div class="container center-align">
     Sígenos en:
-    <a target="_blank" href="https://t.me/+ZzBEFVBcd6FhYzNh" class="fa-brands fa-telegram"></a>
+    <a target="_blank" href="https://t.me/+Dlol6Xd58AdjNDYx" class="fa-brands fa-telegram"></a>
     <a target="_blank" href="https://www.facebook.com/groups/174033883419156" class="fa-brands fa-facebook"></a>
   </div>
   <div class="footer-copyright">
