@@ -106,22 +106,22 @@ $body = function () { ?>
         </div>
       </div>
     </div>
-    <div class=" card">
-            <div class="round-images">
-              <img src="<?= wwwPath('img/avatar/startgen.webp', true) ?>" alt="StartGenK9" style="border-color:#888">
-            </div>
-            <div class="card-content">
-              <p class="center-align">StartGenK9</p>
-              <div class="center-align">
-                <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
-                <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
-              </div>
-            </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/startgen.webp', true) ?>" alt="StartGenK9" style="border-color:#888">
+      </div>
+      <div class="card-content">
+        <p class="center-align">StartGenK9</p>
+        <div class="center-align">
+          <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
+          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
         </div>
       </div>
-    <?php };
+    </div>
+  </div>
+<?php };
 
-  view('components/template', [
-    'title' => 'Inicio 🐾 Furrys de Juárez',
-    'body'  => $body,
-  ]);
+view('components/template', [
+  'title' => 'Inicio 🐾 Furrys de Juárez',
+  'body'  => $body,
+]);
