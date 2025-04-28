@@ -94,20 +94,34 @@ $body = function () { ?>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/startgen.webp', true) ?>" alt="StartGenK9" style="border-color:#888">
+        <img src="<?= wwwPath('img/avatar/NekoShinymoon.webp', true) ?>" alt="Shinymoon" style="border-color:#888">
       </div>
       <div class="card-content">
-        <p class="center-align">StartGenK9</p>
+        <p class="center-align">Shinymoon</p>
         <div class="center-align">
-          <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
-          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
+          <a href="https://www.tiktok.com/@nekoshinymoon" target="_blank" class="social-btn fa-brands fa-tiktok" title="TikTok@nekoshinymoon"></a>
+          <a href="https://twitter.com/NekoShinymoon" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@NekoShinymoon"></a>
+          <a href="https://www.instagram.com/shinymoonneko/" target="_blank" class="social-btn fa-brands fa-instagram" title="Instagram@shinymoonneko"></a>
+          <a href="https://www.twitch.tv/nekoshinymoon" target="_blank" class="social-btn fa-brands fa-twitch" title="Twitch@nekoshinymoon"></a>
         </div>
       </div>
     </div>
-  </div>
-<?php };
+    <div class=" card">
+            <div class="round-images">
+              <img src="<?= wwwPath('img/avatar/startgen.webp', true) ?>" alt="StartGenK9" style="border-color:#888">
+            </div>
+            <div class="card-content">
+              <p class="center-align">StartGenK9</p>
+              <div class="center-align">
+                <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
+                <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
+              </div>
+            </div>
+        </div>
+      </div>
+    <?php };
 
-view('components/template', [
-  'title' => 'Inicio 🐾 Furrys de Juárez',
-  'body'  => $body,
-]);
+  view('components/template', [
+    'title' => 'Inicio 🐾 Furrys de Juárez',
+    'body'  => $body,
+  ]);
