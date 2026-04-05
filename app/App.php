@@ -2,10 +2,15 @@
 
 namespace App;
 
+use Perritu\Router\Router;
+
 class App
 {
   public static function Dispatch()
   {
-    echo 'App::Dispatch here!';
+    // Index
+    Router::ANY('/', function () {
+      View('index');
+    });
   }
 }
