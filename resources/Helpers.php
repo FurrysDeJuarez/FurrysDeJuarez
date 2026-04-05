@@ -62,6 +62,56 @@ function Env(string $cName, mixed $mDefault = null): mixed
   return $aEnv[$cName] ?? $_ENV[$cName] ?? $mDefault;
 }
 
+/**
+ * Renderiza una vista
+ *
+ * @param string $cView
+ * @param array $aData
+ * @return void
+ */
+function View(string $cView, array $aData = []): void
+{
+  static $aViews = null;
+  if (is_null($aViews)) {
+    if (is_file(STORAGE_PATH . '/views.php')) {
+      $aViews = require STORAGE_PATH . '/views.php';
+    } else {
+      $aViews = [];
+      $cViewsDir = VIEWS_PATH;
+      $uViewsDir = strlen($cViewsDir);
+      $rWalker = proc_open(
+        "find $cViewsDir -type f -name '*.php'",
+        [
+          ['pipe', 'r'],
+          ['pipe', 'w'],
+          ['pipe', 'w'],
+        ],
+        $aPipes
+      );
+
+      while ($sLine = fgets($aPipes[1])) {
+        $cPath = substr(trim($sLine), $uViewsDir + 1, -4);
+        $cKey  = preg_replace('/(?i)[^\da-z]/', '.', $cPath);
+        $aViews[$cKey] = "$cViewsDir/$cPath.php";
+      }
+    }
+
+    file_put_contents(
+      STORAGE_PATH . '/views.php',
+      implode(PHP_EOL, [
+        '<?php',
+        'return ' . var_export($aViews, true) . ';',
+      ])
+    );
+  }
+
+  $cKey = preg_replace('/(?i)[^\da-z]/', '.', $cView);
+  if (isset($aViews[$cKey])) {
+    extract($aData);
+    require $aViews[$cKey];
+  }
+}
+
 if (Env('APP_ENV') === 'dev') {
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
