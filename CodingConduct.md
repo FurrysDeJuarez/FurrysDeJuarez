@@ -36,6 +36,7 @@ Los prefijos siguientes se agregan a la notación estandar de CS o Cpp:
 | `$bit` | Banderas de bits       | `int $bitFlags`          |
 | `$err` | Excepciones            | `catch (Exception $err)` |
 | `$o`   | Objetos                | `object $oObject`        |
+| `$m`   | Indefinidos (mixed)    | --                       |
 
 ## Documentación
 
