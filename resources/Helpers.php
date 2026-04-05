@@ -75,7 +75,7 @@ function View(string $cView, array $aData = []): void
   if (is_null($aViews)) {
     if (is_file(STORAGE_PATH . '/views.php')) {
       $aViews = require STORAGE_PATH . '/views.php';
-    } else {
+    } else try {
       $aViews = [];
       $cViewsDir = VIEWS_PATH;
       $uViewsDir = strlen($cViewsDir);
@@ -89,11 +89,38 @@ function View(string $cView, array $aData = []): void
         $aPipes
       );
 
+      if (!$rWalker)
+        throw new Exception(''); ## Ir al fallback.
+
       while ($sLine = fgets($aPipes[1])) {
         $cPath = substr(trim($sLine), $uViewsDir + 1, -4);
         $cKey  = preg_replace('/(?i)[^\da-z]/', '.', $cPath);
         $aViews[$cKey] = "$cViewsDir/$cPath.php";
       }
+
+      proc_close($rWalker);
+    } catch (Exception $errDummy) { ## Fallback native.
+      $aViews = [];
+      $cViewsDir = VIEWS_PATH;
+      $uViewsDir = strlen($cViewsDir);
+
+      $fnWalker = function (string $cPath) use (&$aViews, $cViewsDir, $uViewsDir, &$fnWalker) {
+        $aGlob = glob("$cPath/*");
+        foreach ($aGlob as $cPath) {
+          if (is_dir($cPath)) {
+            $fnWalker($cPath);
+            continue;
+          }
+
+          if (substr($cPath, -4) !== '.php')
+            continue;
+
+          $cPath = substr($cPath, $uViewsDir + 1, -4);
+          $cKey  = preg_replace('/(?i)[^\da-z]/', '.', $cPath);
+          $aViews[$cKey] = "$cViewsDir/$cPath.php";
+        }
+      };
+      $fnWalker($cViewsDir);
     }
 
     file_put_contents(
