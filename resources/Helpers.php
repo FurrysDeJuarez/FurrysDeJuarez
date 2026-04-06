@@ -73,8 +73,10 @@ function View(string $cView, array $aData = []): void
 {
   static $aViews = null;
   if (is_null($aViews)) {
+    $bLoaded = false;
     if (is_file(STORAGE_PATH . '/views.php')) {
       $aViews = require STORAGE_PATH . '/views.php';
+      $bLoaded = true;
     } else try {
       $aViews = [];
       $cViewsDir = VIEWS_PATH;
@@ -123,13 +125,14 @@ function View(string $cView, array $aData = []): void
       $fnWalker($cViewsDir);
     }
 
-    file_put_contents(
-      STORAGE_PATH . '/views.php',
-      implode(PHP_EOL, [
-        '<?php',
-        'return ' . var_export($aViews, true) . ';',
-      ])
-    );
+    if (!$bLoaded)
+      file_put_contents(
+        STORAGE_PATH . '/views.php',
+        implode(PHP_EOL, [
+          '<?php',
+          'return ' . var_export($aViews, true) . ';',
+        ])
+      );
   }
 
   $cKey = preg_replace('/(?i)[^\da-z]/', '.', trim($cView));
