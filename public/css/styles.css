@@ -1,0 +1,43 @@
+:root {
+  /* Esquema de colores */
+  --color-primary: #333;
+  --color-bg: #FFF;
+  --color-accent: #F00;
+  --color-link: #00F;
+  /* background-color: var(--color-bg); */
+
+  /* Bootstrap */
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #FFF;
+    --color-bg: #333;
+    --color-accent: #F00;
+    --color-link: #00F;
+  }
+}
+
+/* Elementos de navegación */
+input.spoiler[type="checkbox"],
+input.spoiler[type="checkbox"]:not(:checked)+div.spoiler {
+  display: none;
+}
+
+html,
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+nav.navbar {
+  background-color: #0005;
+  --bs-navbar-color: var(--color-primary);
+}
+
+.navbar-brand img {
+  height: 40px;
+}
