@@ -83,3 +83,28 @@ nav.navbar {
   text-decoration: none;
   color: var(--color-primary);
 }
+
+/* Footer */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  background: #0005;
+  padding: 0.5rem 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--bs-primary);
+  text-decoration: none;
+}
