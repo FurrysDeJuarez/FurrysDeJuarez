@@ -1,3 +1,5 @@
+@import url(https://fonts.bunny.net/css?family=cousine:400|metrophobic:400);
+
 :root {
   /* Esquema de colores */
   --color-primary: #333;
@@ -9,6 +11,7 @@
   /* Bootstrap */
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-primary);
+  --bs-body-font-family: 'Metrophobic', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,12 +23,13 @@
   }
 }
 
-/* Elementos de navegación */
+/* Elementos desplegables */
 input.spoiler[type="checkbox"],
 input.spoiler[type="checkbox"]:not(:checked)+div.spoiler {
   display: none;
 }
 
+/* Estilos básicos */
 html,
 body {
   border: 0;
@@ -33,6 +37,13 @@ body {
   padding: 0;
 }
 
+code,
+pre,
+tt {
+  font-family: 'Cousine', monospace;
+}
+
+/* Barra de navegación */
 nav.navbar {
   background-color: #0005;
   --bs-navbar-color: var(--color-primary);
@@ -40,4 +51,35 @@ nav.navbar {
 
 .navbar-brand img {
   height: 40px;
+}
+
+.navbar-menu {
+  position: absolute;
+  /* background: #0005; */
+  width: 100vw;
+  /* overflow-y: hidden; */
+  top: 80px;
+}
+
+.navbar-menu .nav-elements {
+  display: block;
+  float: right;
+  background: #0005;
+  padding: 0 0.5rem;
+}
+
+.navbar-menu .nav-elements::before {
+  content: '';
+  border: 10px solid;
+  border-color: #0000 #0000 #0005 #0000;
+  float: right;
+  margin: -20px -8px 0 0;
+}
+
+.navbar-menu .nav-elements a {
+  display: block;
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #0005;
+  text-decoration: none;
+  color: var(--color-primary);
 }
