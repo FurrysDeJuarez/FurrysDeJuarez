@@ -9,8 +9,6 @@ class App
   public static function Dispatch()
   {
     // Index
-    Router::ANY('/', function () {
-      View('index');
-    });
+    Router::get('/', [Routes::class, 'Index']);
   }
 }
