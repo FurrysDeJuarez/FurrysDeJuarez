@@ -2,6 +2,4 @@
 
 <body>
   Vista de inicio [index]
-</body>
-
-</html>
+  <?php View('component.footer'); ?>
