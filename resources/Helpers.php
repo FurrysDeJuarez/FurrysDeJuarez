@@ -7,6 +7,19 @@ defined('STORAGE_PATH') || define('STORAGE_PATH', ROOT_PATH . '/storage');
 defined('VIEWS_PATH')   || define('VIEWS_PATH', ROOT_PATH . '/views');
 
 /**
+ * Regresa una ruta con hash a un recurso en la carpeta pública para saltar el cache
+ *
+ * @param string $cResource
+ * @return string
+ */
+function Asset(string $cResource): string
+{
+  $cPath = PUBLIC_PATH . "/$cResource";
+  $cHash = hash_file('crc32', $cPath);
+  return "$cResource?crc32=$cHash";
+}
+
+/**
  * Regresa una variable de entorno
  *
  * @param string $cName
