@@ -132,7 +132,7 @@ function View(string $cView, array $aData = []): void
     );
   }
 
-  $cKey = preg_replace('/(?i)[^\da-z]/', '.', $cView);
+  $cKey = preg_replace('/(?i)[^\da-z]/', '.', trim($cView));
   if (isset($aViews[$cKey])) {
     extract($aData);
     require $aViews[$cKey];
