@@ -4,6 +4,7 @@ defined('ROOT_PATH')    || define('ROOT_PATH', dirname(__DIR__));
 defined('APP_PATH')     || define('APP_PATH', ROOT_PATH . '/app');
 defined('PUBLIC_PATH')  || define('PUBLIC_PATH', ROOT_PATH . '/public');
 defined('STORAGE_PATH') || define('STORAGE_PATH', ROOT_PATH . '/storage');
+defined('CACHE_PATH')   || define('CACHE_PATH', STORAGE_PATH . '/Cache');
 defined('VIEWS_PATH')   || define('VIEWS_PATH', ROOT_PATH . '/views');
 
 /**
@@ -31,8 +32,8 @@ function Env(string $cName, mixed $mDefault = null): mixed
   static $aEnv = null;
   if (is_null($aEnv)) {
     $bLoaded = false;
-    if (is_file(STORAGE_PATH . '/environment.php')) {
-      $aEnv = require STORAGE_PATH . '/environment.php';
+    if (is_file(CACHE_PATH . '/environment.php')) {
+      $aEnv = require CACHE_PATH . '/environment.php';
       $bLoaded = true;
     } elseif (is_file(ROOT_PATH . '/.env')) {
       $aEnv = parse_ini_file(ROOT_PATH . '/.env');
@@ -62,8 +63,9 @@ function Env(string $cName, mixed $mDefault = null): mixed
         $aEnv[$cKey] = $mValue;
       }
 
+      is_dir(CACHE_PATH) || mkdir(CACHE_PATH, 0777, true);
       file_put_contents(
-        STORAGE_PATH . '/environment.php',
+        CACHE_PATH . '/environment.php',
         implode(PHP_EOL, [
           '<?php',
           'return ' . var_export($aEnv, true) . ';',
@@ -87,8 +89,8 @@ function View(string $cView, array $aData = []): void
   static $aViews = null;
   if (is_null($aViews)) {
     $bLoaded = false;
-    if (is_file(STORAGE_PATH . '/views.php')) {
-      $aViews = require STORAGE_PATH . '/views.php';
+    if (is_file(CACHE_PATH . '/views.php')) {
+      $aViews = require CACHE_PATH . '/views.php';
       $bLoaded = true;
     } else try {
       $aViews = [];
@@ -138,14 +140,16 @@ function View(string $cView, array $aData = []): void
       $fnWalker($cViewsDir);
     }
 
-    if (!$bLoaded)
+    if (!$bLoaded) {
+      is_dir(CACHE_PATH) || mkdir(CACHE_PATH, 0777, true);
       file_put_contents(
-        STORAGE_PATH . '/views.php',
+        CACHE_PATH . '/views.php',
         implode(PHP_EOL, [
           '<?php',
           'return ' . var_export($aViews, true) . ';',
         ])
       );
+    }
   }
 
   $cKey = preg_replace('/(?i)[^\da-z]/', '.', trim($cView));
