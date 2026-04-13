@@ -48,6 +48,9 @@ function Env(string $cName, mixed $mDefault = null): mixed
 
     if (!$bLoaded) {
       foreach ($aEnv as $cKey => $mValue) {
+        $cKey = trim($cKey);
+        if ($cKey === '' || $cKey[0] === '#') continue;
+
         $mValue = trim($mValue);
         $mValue = str_replace('"', '', $mValue);
         $mValue = match ($mValue) {
