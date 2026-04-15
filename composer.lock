@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "perritu/lean-db",
-            "version": "v1.0.0",
+            "version": "v1.0.2-rc",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Perritu/LeanDB.git",
-                "reference": "e37d2511dea8e7e5e4df817b48b64b034ee95d88"
+                "reference": "0de486b0441c22c61427e2dc1ea1e1d25a1c6046"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Perritu/LeanDB/zipball/e37d2511dea8e7e5e4df817b48b64b034ee95d88",
-                "reference": "e37d2511dea8e7e5e4df817b48b64b034ee95d88",
+                "url": "https://api.github.com/repos/Perritu/LeanDB/zipball/0de486b0441c22c61427e2dc1ea1e1d25a1c6046",
+                "reference": "0de486b0441c22c61427e2dc1ea1e1d25a1c6046",
                 "shasum": ""
             },
             "require": {
@@ -50,9 +50,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Perritu/LeanDB/issues",
-                "source": "https://github.com/Perritu/LeanDB/tree/v1.0.0"
+                "source": "https://github.com/Perritu/LeanDB/tree/v1.0.2-rc"
             },
-            "time": "2026-04-02T06:42:27+00:00"
+            "time": "2026-04-15T04:24:42+00:00"
         },
         {
             "name": "perritu/router",
