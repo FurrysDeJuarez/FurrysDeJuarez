@@ -81,6 +81,56 @@ function Env(string $cName, mixed $mDefault = null): mixed
 }
 
 /**
+ * Ejecuta un comando y regresa un array con la salida, o un array con el recurso
+ * y los pipes del comando si se pide de manera asíncrona.
+ *
+ * @param string $cCommand
+ * @param bool $bAsync
+ * @return array
+ */
+function ShellExec(string $cCommand, bool $bAsync = false): array
+{
+  $rCommand = proc_open($cCommand, [
+    ['pipe', 'r'],
+    ['pipe', 'w'],
+    ['pipe', 'w'],
+  ], $aPipes);
+
+  if ($bAsync) {
+    return [
+      'resource' => $rCommand,
+      'pipes' => $aPipes,
+    ];
+  }
+
+  $aOutput = [];
+  while ($sLine = fgets($aPipes[1])) {
+    $aOutput[] = trim($sLine, "\r\n");
+  }
+  proc_close($rCommand);
+
+  return $aOutput;
+}
+
+/**
+ * Regresa un array con `offset` y `length` de la posición de un texto en otro
+ * texto, o `null` si no se encuentra
+ *
+ * @param string $cNeedle
+ * @param string $cHaystack
+ * @return array|null
+ */
+function TextOffset(string $cNeedle, string $cHaystack): ?array
+{
+  $uOffset = strpos($cHaystack, $cNeedle);
+  if ($uOffset === false) return null;
+  return [
+    'offset' => $uOffset,
+    'length' => strlen($cNeedle),
+  ];
+}
+
+/**
  * Renderiza una vista
  *
  * @param string $cView
