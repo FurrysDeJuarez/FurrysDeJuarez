@@ -1,55 +1,42 @@
 <?php
 
 // Funcionalidad básica para instalar el proyecto.
+
+use App\ApiV1\Telegram;
+use App\DB\Connection;
+use App\DB\Models\TelegramMessage;
+use Perritu\LeanDB\LeanDB;
+
 is_file(__DIR__ . '/vendor/autoload.php') || die('vendor/autoload.php not found');
 
-function ShellExec(string $cCommand)
+function PutLog(string $cMessage)
 {
-  try {
-    $rProcess = proc_open($cCommand, [
-      ['pipe', 'r'],
-      ['pipe', 'w'],
-      ['pipe', 'w']
-    ], $aPipes);
-
-    if ($rProcess) {
-      return [
-        $rProcess,
-        $aPipes,
-      ];
-    }
-  } catch (\Throwable $errDummy) {
-  }
-  return null;
+  static $rLog = fopen(STORAGE_PATH . '/Logs/install.log', 'a+');
+  fwrite($rLog, date('Y-m-d H:i:s') . " - $cMessage" . PHP_EOL);
 }
 
 $cStorage = __DIR__ . '/storage';
-if (file_exists($cStorage . '/Cache')) {
-  [$rShell, $aPipes] = ShellExec("rm -rf '$cStorage/Cache'");
-  proc_close($rShell);
-}
-[$rShell, $aPipes] = ShellExec("mkdir -p '$cStorage/Cache' '$cStorage/TG' '$cStorage/Logs'");
+$rShell = proc_open("rm -rf '$cStorage/Cache';mkdir -p '$cStorage/Cache/Telegram' '$cStorage/Logs'", [
+  ['pipe', 'r'],
+  ['pipe', 'w'],
+  ['pipe', 'w']
+], $aPipes);
 proc_close($rShell);
 
-// Carga las dependencias.
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Log del archivo de instalación.
-$rLog = fopen(STORAGE_PATH . '/Logs/install.log', 'a+');
-fwrite($rLog, date('Y-m-d H:i:s') . " - Instalación iniciada" . PHP_EOL);
+PutLog("Instalación iniciada");
 
-// Telegram
-$cTgApikey = Env('TG_APIKEY');
-$cBaseUrl  = "https://api.telegram.org/bot$cTgApikey";
-$cAppUrl   = Env('APP_URL', 'https://canary.furrysdejuarez.com');
+PutLog("Registrando Telegram");
+Telegram::Api('deleteWebhook', ['drop_pending_updates' => true]);
+Telegram::Api('setWebhook', [
+  'url' => Env('APP_URL', 'https://canary.furrysdejuarez.com') . '/api/v1/Telegram'
+]);
 
-$cCmd  = "curl '$cBaseUrl/deleteWebhook';";
-$cCmd .= "curl '$cBaseUrl/setWebhook' -F url='$cAppUrl/api/v1/Tg';";
+PutLog("Generando base de datos");
 
-fwrite($rLog, date('Y-m-d H:i:s') . " - Ajustes de telegram:" . PHP_EOL);
-fwrite($rLog, "> $cCmd" . PHP_EOL);
-[$rRes, $aPipes] = ShellExec($cCmd);
-while ($cLine = fgets($aPipes[1])) {
-  fwrite($rLog, "> $cLine" . PHP_EOL);
-}
-proc_close($rRes);
+$cSQL = LeanDB::BuildSchema(TelegramMessage::class);
+PutLog("DB: TelegramMessage\n$cSQL\n-----");
+Connection::Query($cSQL);
+
+PutLog("Instalación finalizada");
