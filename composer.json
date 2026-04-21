@@ -22,6 +22,7 @@
   "require": {
     "php": ">=8.5",
     "perritu/router": "^2.0",
-    "perritu/lean-db": "^1.0"
+    "perritu/lean-db": "^1.0",
+    "perritu/api-sessions": "^1.0"
   }
 }

@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "690e7b1c32b63b24507a8eb09069c579",
+    "content-hash": "8f72506a98b3dafe5e44974423236bab",
     "packages": [
+        {
+            "name": "perritu/api-sessions",
+            "version": "v1.0.0-RC",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Perritu/ApiSessions.git",
+                "reference": "1c140976f61592bfdcecc83c32322f981292cbf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Perritu/ApiSessions/zipball/1c140976f61592bfdcecc83c32322f981292cbf2",
+                "reference": "1c140976f61592bfdcecc83c32322f981292cbf2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Perritu\\ApiSessions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "Angel Garcia",
+                    "email": "git@angelgarcia.dev"
+                }
+            ],
+            "homepage": "https://github.com/Perritu/ApiSessions",
+            "keywords": [
+                "api",
+                "rest",
+                "session",
+                "session manager"
+            ],
+            "support": {
+                "issues": "https://github.com/Perritu/ApiSessions/issues",
+                "source": "https://github.com/Perritu/ApiSessions/tree/v1.0.0-RC"
+            },
+            "time": "2026-04-21T06:01:30+00:00"
+        },
         {
             "name": "perritu/lean-db",
             "version": "v1.0.2-rc",
