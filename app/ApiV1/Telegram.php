@@ -3,6 +3,7 @@
 namespace App\ApiV1;
 
 use App\DB\Models\TelegramMessage;
+use Perritu\ApiSessions\ApiSessions;
 use stdClass;
 
 defined('TELEGRAM_CACHE_PATH') || define('TELEGRAM_CACHE_PATH', CACHE_PATH . '/Telegram');
@@ -113,6 +114,12 @@ class Telegram
       'Username'  => $cUser,
     ]);
 
+    // Para grupos
+    if ($iChatId < 0) {
+      // No se responden a los mensajes de grupos.
+      return;
+    }
+
     // Comandos de Telegram
     switch (strtolower(trim($oMessage->text))) {
       case '/start':
@@ -128,18 +135,10 @@ class Telegram
         $cAppEnv = Env('APP_ENV');
         if ($cAppEnv != 'prod') {
           $mAppVersion = Env('APP_VERSION', 'SNAPSHOT');
-          // $aTextMessage = array_merge($aTextMessage, [
-          //   PHP_EOL,
-          //   '```',
-          //   "AppEnv: $cAppEnv",
-          //   "AppVersion: $mAppVersion",
-          //   '```',
-          // ]);
           $aTextMessage = [
             ...$aTextMessage,
-            // '',
-            '```',
-            "AppEnv: $cAppEnv",
+            '```conf',
+            "AppEnv:     $cAppEnv",
             "AppVersion: $mAppVersion",
             '```',
           ];
@@ -147,36 +146,27 @@ class Telegram
 
         $aTextMessage = [
           ...$aTextMessage,
-          // PHP_EOL,
+          'Soy Beanites, mascota de la comunidad de **Furrys de Juarez**.',
           // '',
-          'Soy Beanites, mascota de la comunidad de Furrys de Juarez.',
-          '',
-          'Conmigo puedes consultar información relacionada con tu perfil dentro de la comunidad.',
-          '',
+          'Conmigo puedes consultar información relacionada con tu perfil dentro de la comunidad.' . PHP_EOL,
           'Estos son los comandos disponibles:',
-          '/start - Recomienza la sesión. Esto no elimina tu información.',
-          '/help - Muestra los comandos disponibles.',
-          '/bank - Te permite acceder a tu cuenta bancaria. (sistema de puntos)',
+          '**/start**: Reinicia la sesión y muestra este mensaje. Esto **no elimina** tu información.',
+          '**/bank**:  Te permite acceder a tu cuenta bancaria. (sistema de puntos)',
+          '**/anon**:  Opcion para enviar un mensaje a la administración de forma anónima.',
         ];
 
         $cTextMessage = implode(PHP_EOL, $aTextMessage);
-        $oRes = static::Api('sendMessage', [
-          'chat_id' => $iChatId,
-          'text' => $cTextMessage,
-          'parse_mode' => 'Markdown',
-          'entities' => [
-            ['type' => 'bot_command', ...TextOffset('/start', $cTextMessage)],
-            ['type' => 'bot_command', ...TextOffset('/help',  $cTextMessage)],
-            ['type' => 'bot_command', ...TextOffset('/bank',  $cTextMessage)],
-          ],
-        ]);
-        $oResult = $oRes->result;
-        TelegramMessage::Create([
-          'ChatId'    => $oResult->chat->id,
-          'MessageId' => $oResult->message_id,
-          'UserId'    => $oResult->from->id,
-          'Username'  => $oResult->from->username,
-        ]);
+        $oResult = static::SendMessage(
+          $iChatId,
+          $cTextMessage,
+          [
+            'entities' => [
+              ['type' => 'bot_command', ...TextOffset('/start', $cTextMessage)],
+              ['type' => 'bot_command', ...TextOffset('/bank',  $cTextMessage)],
+              ['type' => 'bot_command', ...TextOffset('/anon',  $cTextMessage)],
+            ],
+          ]
+        );
 
         $aMessages = range(max(1, $oResult->message_id - 99), $oResult->message_id - 1);
         if (count($aMessages) > 0) {
@@ -190,27 +180,68 @@ class Telegram
             'MessageId' => $aMessages,
           ]);
         }
-        break;
-      case '/help':
-      case '/ayuda':
+        return;
       case '/bank':
-        // TODO.
-        $oResult = static::Api('sendMessage', [
-          'chat_id' => $iChatId,
-          'text' => 'Aún en desarrollo.',
-        ]);
-        TelegramMessage::Create([
-          'ChatId'    => $oResult->result->chat->id,
-          'MessageId' => $oResult->result->message_id,
-          'UserId'    => $oResult->result->from->id,
-          'Username'  => $oResult->result->from->username,
-        ]);
-        break;
+        static::SendMessage($iChatId, 'Ups~ parece que no estas en el grupo de **Furrys de Juarez**.');
+        return;
+      case '/anon':
+        $oSession = ApiSessions::Instance($iChatId);
+        $oSession->LastCMD = '/anon';
+        static::SendMessage($iChatId, 'Escribe lo que deseas enviar a la administración.');
+        return;
       default:
+        $oSession = ApiSessions::Instance($iChatId);
+        switch ($oSession->LastCMD) {
+          case '/anon':
+            $aMessage = explode(PHP_EOL, $oMessage->text);
+            $aMessage = array_map((fn ($cMessage) => "> $cMessage"), $aMessage);
+            $cMessage = implode(PHP_EOL, $aMessage);
+            static::SendMessage($iChatId, 'Emitiendo mensaje...');
+            static::SendMessage(
+              '-1002478272484',
+              implode(PHP_EOL, [
+                "Mensaje anonimo:",
+                $cMessage,
+              ]),
+              [
+                'message_thread_id' => '15541',
+              ]
+            );
+        }
         break;
     }
   }
 
+  /**
+   * Envía un mensaje a Telegram
+   *
+   * @param string $iChatId
+   * @param string $cText
+   * @param array  $aOptions = []
+   * @return stdClass
+   */
+  protected static function SendMessage(string $iChatId, string $cText, array $aOptions = []): stdClass
+  {
+    if (!isset($aOptions['parse_mode'])) $aOptions['parse_mode'] = 'MarkdownV2';
+    if ($aOptions['parse_mode'] === 'MarkdownV2') {
+      // '_[]()~`>#+-=|{}.!'
+      $cText = preg_replace('/([_\[\]\(\)~#\+\-=|\{\}\.\!])/', '\\\\$1', $cText);
+    }
+
+    $oResult = static::Api('sendMessage', [
+      'chat_id' => $iChatId,
+      'text' => $cText,
+      'parse_mode' => $aOptions['parse_mode'] ?? 'MarkdownV2',
+      ...$aOptions,
+    ]);
+    TelegramMessage::Create([
+      'ChatId'    => $oResult->result->chat->id,
+      'MessageId' => $oResult->result->message_id,
+      'UserId'    => $oResult->result->from->id,
+      'Username'  => $oResult->result->from->username,
+    ]);
+    return $oResult->result;
+  }
 
   /**
    * Register a log to Telegram log file
