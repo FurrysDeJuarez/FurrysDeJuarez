@@ -74,7 +74,44 @@ $body = function () { ?>
         <div class="center-align">
           <a href="https://bsky.app/profile/astachoiki.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@astachoiki.bsky.social"></a>
           <a href="https://t.me/astachoikiwips" target="_blank" class="social-btn fa-brands fa-telegram" title="Telegram@astachoikiwips"></a>
-          <a href="https://twitter.com/bakucreeper" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@bakucreeper"></a>
+          <a href="https://x.com/bakucreeper" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@bakucreeper"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/Beddy.webp', true) ?>" alt="Beddy" style="border-color: #000">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Beddy</p>
+        <div class="center-align">
+          <a href="https://www.instagram.com/beddy_maniacs" target="_blank" class="social-btn fa-brands fa-instagram" title="Instagram@beddy_maniacs"></a>
+          <a href="https://t.me/DelAnchorsBoat" target="_blank" class="social-btn fa-brands fa-telegram" title="Telegram@DelAnchorsBoat"></a>
+          <a href="https://www.instagram.com/delanchor" target="_blank" class="social-btn fa-brands fa-instagram" title="Instagram@delanchor"></a>
+          <a href="https://bsky.app/profile/delanchoraq.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@delanchoraq.bsky.social"></a>
+        </div>
+      </div>
+    </div>
+    <div class=" card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/DelAnchor.webp', true) ?>" alt="DelAnchor" style="border-color: #000">
+      </div>
+      <div class="card-content">
+        <p class="center-align">DelAnchor</p>
+        <div class="center-align">
+          <a href="https://x.com/DelAnchorAQ" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@DelAnchorAQ"></a>
+        </div>
+      </div>
+    </div>
+    <div class=" card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/Floppa.webp', true) ?>" alt="Floppa" style="border-color: #011">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Floppa</p>
+        <div class="center-align">
+          <a href="https://www.facebook.com/share/14Z3Ma6m1JQ/" target="_blank" class="social-btn fa-brands fa-facebook" title="Facebook@Floppa's TCG Plus +"></a>
+          <a href="https://x.com/marcownano001" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@marcownano001"></a>
         </div>
       </div>
     </div>
@@ -88,19 +125,19 @@ $body = function () { ?>
           <a href="https://bsky.app/profile/konanwolfpard.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@konanwolfpard.bsky.social"></a>
           <a href="https://www.facebook.com/profile.php?id=100069752913094" target="_blank" class="social-btn fa-brands fa-facebook" title="Facebook@konanwolfpard"></a>
           <a href="https://www.furtrack.com/user/KonanWolfpard/crafting" target=_blank" class="social-btn fa-solid fa-paw" title="FurTrack@KonanWolfpard"></a>
-          <a href=" https://twitter.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@konanwolfpard"></a>
+          <a href="https://x.com/konanwolfpard" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@konanwolfpard"></a>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="round-images">
-        <img src="<?= wwwPath('img/avatar/NekoShinymoon.webp', true) ?>" alt="Shinymoon" style="border-color:#888">
+        <img src="<?= wwwPath('img/avatar/NekoShinymoon.webp', true) ?>" alt="Shinymoon" style="border-color: #333">
       </div>
       <div class="card-content">
         <p class="center-align">Shinymoon</p>
         <div class="center-align">
           <a href="https://www.tiktok.com/@nekoshinymoon" target="_blank" class="social-btn fa-brands fa-tiktok" title="TikTok@nekoshinymoon"></a>
-          <a href="https://twitter.com/NekoShinymoon" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@NekoShinymoon"></a>
+          <a href="https://x.com/NekoShinymoon" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@NekoShinymoon"></a>
           <a href="https://www.instagram.com/shinymoonneko/" target="_blank" class="social-btn fa-brands fa-instagram" title="Instagram@shinymoonneko"></a>
           <a href="https://www.twitch.tv/nekoshinymoon" target="_blank" class="social-btn fa-brands fa-twitch" title="Twitch@nekoshinymoon"></a>
         </div>
@@ -114,7 +151,33 @@ $body = function () { ?>
         <p class="center-align">StartGenK9</p>
         <div class="center-align">
           <a href="https://t.me/StartGenK9" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@StartGenK9"></a>
-          <a href="https://twitter.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-twitter" title="Twitter@StartGenK9"></a>
+          <a href="https://x.com/StartGenK9" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@StartGenK9"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/Xoloitz.webp', true) ?>" alt="Xoloitz" style="border-color:#cba">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Xoloitz</p>
+        <div class="center-align">
+          <a href="https://t.me/+TCh3u9oZU6Sz489S" target="blank" class="social-btn fa-brands fa-telegram" title="Telegram@Xoloitz Art Channel"></a>
+          <a href="https://www.furaffinity.net/user/chakat-silverpaws" target="_blank" class="social-btn fa-solid fa-paw" title="FurAffinity@chakat-silverpaws"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/Vadamy.webp', true) ?>" alt="Vadamy" style="border-color:#09b">
+      </div>
+      <div class="card-content">
+        <p class="center-align">Vadamy</p>
+        <div class="center-align">
+          <a href="https://bsky.app/profile/vadamymcvf.bsky.social" target="_blank" class="social-btn fa-brands fa-bluesky" title="Bsky@vadamymcvf.bsky.social"></a>
+          <a href="https://x.com/Vadamy_Mcvf" target="_blank" class="social-btn fa-brands fa-x-twitter" title="X@Vadamy_Mcvf"></a>
+          <a href="https://www.furaffinity.net/user/vadamymcvf" target="_blank" class="social-btn fa-solid fa-paw" title="FurAffinity@vadamymcvf"></a>
+          <a href="https://www.twitch.tv/vadamy_mcvf" target="_blank" class="social-btn fa-brands fa-twitch" title="Twitch@vadamy_mcvf"></a>
         </div>
       </div>
     </div>
