@@ -189,18 +189,18 @@ function View(string $cView, array $aData = []): void
 
       $fnWalker = function (string $cPath) use (&$aViews, $cViewsDir, $uViewsDir, &$fnWalker) {
         $aGlob = glob("$cPath/*");
-        foreach ($aGlob as $cPath) {
-          if (is_dir($cPath)) {
-            $fnWalker($cPath);
+        foreach ($aGlob as $cSubPath) {
+          if (is_dir($cSubPath)) {
+            $fnWalker($cSubPath);
             continue;
           }
 
-          if (substr($cPath, -4) !== '.php')
+          if (substr($cSubPath, -4) !== '.php')
             continue;
 
-          $cPath = substr($cPath, $uViewsDir + 1, -4);
-          $cKey  = preg_replace('/(?i)[^\da-z]/', '.', $cPath);
-          $aViews[$cKey] = "$cViewsDir/$cPath.php";
+          $cSubPath = substr($cSubPath, $uViewsDir + 1, -4);
+          $cKey  = preg_replace('/(?i)[^\da-z]/', '.', $cSubPath);
+          $aViews[$cKey] = "$cViewsDir/$cSubPath.php";
         }
       };
       $fnWalker($cViewsDir);
