@@ -2,8 +2,9 @@
 
 namespace App\ApiV1;
 
+use App\ApiSessions\ApiSessions;
 use App\DB\Models\TelegramMessage;
-use Perritu\ApiSessions\ApiSessions;
+use PDO;
 use stdClass;
 
 defined('TELEGRAM_CACHE_PATH') || define('TELEGRAM_CACHE_PATH', CACHE_PATH . '/Telegram');
@@ -168,7 +169,17 @@ class Telegram
           ]
         );
 
-        $aMessages = range(max(1, $oResult->message_id - 99), $oResult->message_id - 1);
+        // $aMessages = range(max(1, $oResult->message_id - 90), $oResult->message_id - 1);
+
+        $aMessages = [];
+        $rMessages = TelegramMessage::Read([
+          'ChatId' => $oResult->chat->id,
+        ]);
+        while ($oMessage = $rMessages->fetch(PDO::FETCH_OBJ)) {
+          if ($oMessage->MessageId === $oResult->message_id) continue;
+          $aMessages[] = $oMessage->MessageId;
+        }
+
         if (count($aMessages) > 0) {
           static::Api('deleteMessages', [
             'chat_id' => $oResult->chat->id,
@@ -185,6 +196,7 @@ class Telegram
         static::SendMessage($iChatId, 'Ups~ parece que no estas en el grupo de **Furrys de Juarez**.');
         return;
       case '/anon':
+        is_dir(CACHE_PATH . '/Telegram') || mkdir(CACHE_PATH . '/Telegram', 0775, true);
         $oSession = ApiSessions::Instance($iChatId);
         $oSession->LastCMD = '/anon';
         static::SendMessage($iChatId, 'Escribe lo que deseas enviar a la administración.');
@@ -198,13 +210,13 @@ class Telegram
             $cMessage = implode(PHP_EOL, $aMessage);
             static::SendMessage($iChatId, 'Emitiendo mensaje...');
             static::SendMessage(
-              '-1002478272484',
+              Env('TG_ANON_CHANNEL'),
               implode(PHP_EOL, [
                 "Mensaje anonimo:",
                 $cMessage,
               ]),
               [
-                'message_thread_id' => '15541',
+                'message_thread_id' => Env('TG_ANON_TOPIC'),
               ]
             );
         }
