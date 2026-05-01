@@ -49,7 +49,10 @@ function Env(string $cName, mixed $mDefault = null): mixed
     if (!$bLoaded) {
       foreach ($aEnv as $cKey => $mValue) {
         $cKey = trim($cKey);
-        if ($cKey === '' || $cKey[0] === '#') continue;
+        if ($cKey === '' || $cKey[0] === '#') {
+          unset($aEnv[$cKey]);
+          continue;
+        }
 
         $mValue = trim($mValue);
         $mValue = str_replace('"', '', $mValue);
@@ -60,8 +63,16 @@ function Env(string $cName, mixed $mDefault = null): mixed
           default => $mValue,
         };
 
-        if (is_string($mValue) && is_numeric($mValue))
+        if (is_string($mValue) && is_numeric($mValue)) {
           $mValue = (float) $mValue;
+
+          // $iValue = (int) $mValue;
+          // if ($mValue == $iValue)
+          //   $mValue = $iValue;
+          if (($mValue % 1) === 0)
+            $mValue = (int) $mValue;
+        }
+
 
         $aEnv[$cKey] = $mValue;
       }
@@ -75,6 +86,8 @@ function Env(string $cName, mixed $mDefault = null): mixed
         ])
       );
     }
+
+    touch(CACHE_PATH . '/environment.php');
   }
 
   return $aEnv[$cName] ?? $_ENV[$cName] ?? $mDefault;
