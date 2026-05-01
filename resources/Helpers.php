@@ -5,7 +5,7 @@ defined('APP_PATH')     || define('APP_PATH', ROOT_PATH . '/app');
 defined('PUBLIC_PATH')  || define('PUBLIC_PATH', ROOT_PATH . '/public');
 defined('STORAGE_PATH') || define('STORAGE_PATH', ROOT_PATH . '/storage');
 defined('CACHE_PATH')   || define('CACHE_PATH', STORAGE_PATH . '/Cache');
-defined('VIEWS_PATH')   || define('VIEWS_PATH', ROOT_PATH . '/views');
+defined('VIEWS_PATH')   || define('VIEWS_PATH', ROOT_PATH . '/resources/views');
 
 /**
  * Regresa una ruta con hash a un recurso en la carpeta pública para saltar el cache
