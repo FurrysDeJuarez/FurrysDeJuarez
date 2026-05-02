@@ -28,9 +28,8 @@ class Telegram
     $cPayload = json_encode($aData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     static::Log("$cMethod > $cPayload");
     if (strlen($cPayload) > 150) {
-      // is_dir(TELEGRAM_CACHE_PATH) || mkdir(TELEGRAM_CACHE_PATH, 0775, true);
-      static $dummy = ShellExec("mkdir -p '" . TELEGRAM_CACHE_PATH . "';" .
-        "find '" . TELEGRAM_CACHE_PATH . "' -type f -mmin +5 -delete", true);
+      is_dir(TELEGRAM_CACHE_PATH) || mkdir(TELEGRAM_CACHE_PATH, 0775, true);
+
       $uHash = hexdec(hash('crc32', $cPayload));
       $cPath = sprintf(
         "%s/%x.json",
@@ -121,16 +120,12 @@ class Telegram
       return;
     }
 
+    $oSession = ApiSessions::Instance('Telegram' . $iChatId);
+
     // Comandos de Telegram
     switch (strtolower(trim($oMessage->text))) {
       case '/start':
       case '/comenzar':
-        // Evento de actividad.
-        static::Api('sendChatAction', [
-          'chat_id' => $iChatId,
-          'action' => 'typing',
-        ], true);
-
         // Mensaje de bienvenida.
         $aTextMessage = ['Bienvenido a Furrys de Juarez'];
         $cAppEnv = Env('APP_ENV');
@@ -156,6 +151,12 @@ class Telegram
           '**/anon**:  Opcion para enviar un mensaje a la administración de forma anónima.',
         ];
 
+        // Reset the menu and session variables.
+        $oSession->__restart();
+        static::Api('setChatMenuButton', [
+          'chat_id' => $iChatId,
+        ], true);
+
         $cTextMessage = implode(PHP_EOL, $aTextMessage);
         $oResult = static::SendMessage(
           $iChatId,
@@ -168,8 +169,6 @@ class Telegram
             ],
           ]
         );
-
-        // $aMessages = range(max(1, $oResult->message_id - 90), $oResult->message_id - 1);
 
         $aMessages = [];
         $rMessages = TelegramMessage::Read([
@@ -197,12 +196,10 @@ class Telegram
         return;
       case '/anon':
         is_dir(CACHE_PATH . '/Telegram') || mkdir(CACHE_PATH . '/Telegram', 0775, true);
-        $oSession = ApiSessions::Instance($iChatId);
         $oSession->LastCMD = '/anon';
         static::SendMessage($iChatId, 'Escribe lo que deseas enviar a la administración.');
         return;
       default:
-        $oSession = ApiSessions::Instance($iChatId);
         switch ($oSession->LastCMD) {
           case '/anon':
             $aMessage = explode(PHP_EOL, $oMessage->text);
