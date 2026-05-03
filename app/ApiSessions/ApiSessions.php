@@ -23,4 +23,12 @@ class ApiSessions extends Base
   {
     return parent::Instance($cIdentity, $cStorageDir ?? CACHE_PATH . '/Telegram');
   }
+
+  /**
+   * Flush all session variables.
+   */
+  public function __restart()
+  {
+    $this->oSession = (object) [];
+  }
 }
