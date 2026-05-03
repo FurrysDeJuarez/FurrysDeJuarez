@@ -36,7 +36,15 @@ function Env(string $cName, mixed $mDefault = null): mixed
       $aEnv = require CACHE_PATH . '/environment.php';
       $bLoaded = true;
     } elseif (is_file(ROOT_PATH . '/.env')) {
-      $aEnv = parse_ini_file(ROOT_PATH . '/.env');
+      $rFp = fopen(ROOT_PATH . '/.env', "r");
+      $aEnv = [];
+      while ($cLine = fgets($rFp)) {
+        if (strpos($cLine, '=') !== false) {
+          [$cKey, $cValue] = explode('=', $cLine, 2);
+          $aEnv[$cKey] = $cValue;
+        }
+      }
+      fclose($rFp);
     } else {
       $aEnv = [];
     }
