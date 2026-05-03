@@ -4,7 +4,10 @@
 
 use App\ApiV1\Telegram;
 use App\DB\Connection;
-use App\DB\Models\TelegramMessage;
+use App\DB\Models\{
+  FrontpageMembers,
+  TelegramMessage,
+};
 use Perritu\LeanDB\LeanDB;
 
 is_file(__DIR__ . '/vendor/autoload.php') || die('vendor/autoload.php not found');
@@ -37,6 +40,10 @@ PutLog("Generando base de datos");
 
 $cSQL = LeanDB::BuildSchema(TelegramMessage::class);
 PutLog("DB: TelegramMessage\n$cSQL\n-----");
+Connection::Query($cSQL);
+
+$cSQL = LeanDB::BuildSchema(FrontpageMembers::class);
+PutLog("DB: FrontpageMembers\n$cSQL\n-----");
 Connection::Query($cSQL);
 
 PutLog("Instalación finalizada");
