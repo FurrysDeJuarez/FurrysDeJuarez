@@ -11,8 +11,9 @@
 </nav>
 
 <input type="checkbox" id="nav-toggle" class="spoiler">
-<div class="spoiler navbar-menu">
-  <div class="container">
+<div class="spoiler">
+  <label for="nav-toggle" class="nav-toggle-bg"></label>
+  <div class="container text-end">
     <div class="nav-elements">
       <a href="/" title="Inicio">Inicio</a>
       <a href="/acerca-de" title="Acerca de">Acerca de</a>

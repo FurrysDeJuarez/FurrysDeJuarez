@@ -53,35 +53,44 @@ nav.navbar {
   height: 40px;
 }
 
-.navbar-menu {
-  position: absolute;
-  /* background: #0005; */
-  width: 100vw;
-  /* overflow-y: hidden; */
-  top: 80px;
-}
-
-.navbar-menu .nav-elements {
-  display: block;
-  float: right;
+.nav-toggle-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: #0005;
-  padding: 0 0.5rem;
 }
 
-.navbar-menu .nav-elements::before {
+.nav-elements {
+  position: relative;
+  z-index: 5;
+  background: var(--color-bg);
+  display: inline-block;
+  right: -5px;
+}
+
+.nav-elements::before {
   content: '';
-  border: 10px solid;
-  border-color: #0000 #0000 #0005 #0000;
+  display: block;
+  position: relative;
+  height: 20px;
+  width: 20px;
   float: right;
-  margin: -20px -8px 0 0;
+  border: 10px solid transparent;
+  border-bottom: 10px solid var(--color-bg);
+  margin-top: -20px;
+  margin-right: 5px;
 }
 
-.navbar-menu .nav-elements a {
+.nav-elements>a {
   display: block;
-  padding: 0.3rem 0.5rem;
-  border-bottom: 1px solid #0005;
-  text-decoration: none;
+  text-align: left;
+  padding: 0 calc(var(--bs-gutter-x) * .5);
+  padding-bottom: 3px;
+  border-bottom: 1px solid #0003;
   color: var(--color-primary);
+  text-decoration: none;
 }
 
 /* Footer */
