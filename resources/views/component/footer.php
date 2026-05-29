@@ -29,6 +29,3 @@
   <?php foreach ($aScripts ?? [] as $cScript) : ?>
     <script src="<?= $cScript ?>"></script>
   <?php endforeach; ?>
-  </body>
-
-  </html>

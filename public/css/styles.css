@@ -50,7 +50,8 @@ nav.navbar {
 }
 
 .navbar-brand img {
-  height: 40px;
+  height: calc(10 * var(--bs-navbar-brand-padding-y));
+  margin: calc(-2 * var(--bs-navbar-brand-padding-y) - var(--bs-navbar-padding-y)) 0;
 }
 
 .nav-toggle-bg {
@@ -59,7 +60,8 @@ nav.navbar {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #0005;
+  background: #000A;
+  backdrop-filter: blur(3px);
 }
 
 .nav-elements {
@@ -116,4 +118,31 @@ footer p {
 footer a {
   color: var(--bs-primary);
   text-decoration: none;
+}
+
+/* General */
+main p {
+  margin: 0.5rem 0;
+}
+
+main>.container,
+main>.parallax {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+main .parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main .parallax .container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: 1rem;
+  background: var(--bs-body-bg);
+  border-radius: 1rem;
+  opacity: 0.9;
 }
