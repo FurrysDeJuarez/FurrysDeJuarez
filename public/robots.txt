@@ -1,2 +1,6 @@
 User-agent: *
 Disallow: /
+
+# Facebook Bot
+User-agent: FacebookBot
+Allow: /
