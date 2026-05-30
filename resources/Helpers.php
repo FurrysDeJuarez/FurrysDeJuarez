@@ -31,28 +31,24 @@ function Env(string $cName, mixed $mDefault = null): mixed
 {
   static $aEnv = null;
   if (is_null($aEnv)) {
-    $bLoaded = false;
     if (is_file(CACHE_PATH . '/environment.php')) {
       $aEnv = require CACHE_PATH . '/environment.php';
-      $bLoaded = true;
     } elseif (is_file(ROOT_PATH . '/.env')) {
-      $aEnv = parse_ini_file(ROOT_PATH . '/.env');
-    } else {
+      // parse_ini_file no está funcionando y no pienso quedarme averiguarlo el por qué.
       $aEnv = [];
-    }
+      foreach (file(ROOT_PATH . '/.env') as $cLine) {
+        $cLine = trim($cLine);
+        if (
+          $cLine === '' ||
+          $cLine[0] === '#' ||
+          !strpos($cLine, '=')
+        ) continue;
 
-    if (!is_array($aEnv)) {
-      $aEnv = [];
-      $bLoaded = false;
-    }
-
-    if (!$bLoaded) {
-      foreach ($aEnv as $cKey => $mValue) {
+        [$cKey, $mValue] = explode('=', $cLine, 2);
         $cKey = trim($cKey);
-        if ($cKey === '' || $cKey[0] === '#') continue;
+        // $mValue = trim(str_replace('"', '', $mValue));
+        $mValue = preg_replace('/^"?(.*)"?$/', '$1', trim($mValue));
 
-        $mValue = trim($mValue);
-        $mValue = str_replace('"', '', $mValue);
         $mValue = match ($mValue) {
           'true', 'TRUE' => true,
           'false', 'FALSE' => false,
@@ -60,20 +56,18 @@ function Env(string $cName, mixed $mDefault = null): mixed
           default => $mValue,
         };
 
-        if (is_string($mValue) && is_numeric($mValue))
+        if (is_string($mValue) && is_numeric($mValue)) {
           $mValue = (float) $mValue;
+          if ((int) $mValue == $mValue)
+            $mValue = (int) $mValue;
+        }
 
         $aEnv[$cKey] = $mValue;
       }
 
       is_dir(CACHE_PATH) || mkdir(CACHE_PATH, 0777, true);
-      file_put_contents(
-        CACHE_PATH . '/environment.php',
-        implode(PHP_EOL, [
-          '<?php',
-          'return ' . var_export($aEnv, true) . ';',
-        ])
-      );
+      file_put_contents(CACHE_PATH . '/environment.php', '<?php return ' . var_export($aEnv, true) . ';');
+      file_put_contents(CACHE_PATH . '/environment.json', json_encode($aEnv));
     }
   }
 
