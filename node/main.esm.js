@@ -6,7 +6,6 @@
  * @param {env} process.env
  */
 (async function main(env) {
-  debugger
   // Familia de constantes.
   // Librerías
   const fs = await import('fs'),
@@ -21,6 +20,7 @@
     Env = function (key, fallback = null) { return process.oSingleton.Environment[`${key}`] ?? process.env[`${key}`] ?? fallback }
 
   process.oSingleton = {
+    fs,
     mysql,
     path,
     ROOT_PATH,
@@ -49,7 +49,6 @@
         break
     }
   }
-
   const oTargetInstance = process.oSingleton.Modules[`${command ?? -1}`] ?? null
   if (oTargetInstance)
     oTargetInstance(payload)
