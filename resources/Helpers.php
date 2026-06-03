@@ -93,6 +93,10 @@ function Env(string $cName, mixed $mDefault = null): mixed
           'return ' . var_export($aEnv, true) . ';',
         ])
       );
+      file_put_contents(
+        CACHE_PATH . '/environment.json',
+        json_encode($aEnv, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+      );
     }
 
     touch(CACHE_PATH . '/environment.php');
