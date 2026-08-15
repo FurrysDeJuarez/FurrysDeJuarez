@@ -92,6 +92,20 @@ $body = function () { ?>
         </div>
       </div>
     </div>
+    <div class="card">
+      <div class="round-images">
+        <img src="<?= wwwPath('img/avatar/BriTheBat.webp', true) ?>" alt="Bri the bat" style="border-color: #c99">
+      </div>
+      <div class="card-content">
+        <p class="center-align">BriTheBat</p>
+        <div class="center-align">
+          <a href="https://www.twitch.tv/Bri_the_Bat" target="_blank" class="social-btn fa-brands fa-twitch" title="Twitch@Bri_the_Bat"></a>
+          <a href="https://www.facebook.com/profile.php?id=100063148395955" target="_blank" class="social-btn fa-brands fa-facebook" title="Facebook@Bti The Bat"></a>
+          <a href="https://www.instagram.com/bri_the_bat/" target="_blank" class="social-btn fa-brands fa-instagram" title="Instagram@bri_the_bat"></a>
+          <a href="https://www.deviantart.com/brianda-guerra" target="_blank" class="social-btn fa-brands fa-deviantart" title="DeviantArt@delanchoraq.bsky.social"></a>
+        </div>
+      </div>
+    </div>
     <div class=" card">
       <div class="round-images">
         <img src="<?= wwwPath('img/avatar/DelAnchor.webp', true) ?>" alt="DelAnchor" style="border-color: #000">
